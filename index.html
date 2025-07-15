@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identidades Trigonométricas - Guía Interactiva</title>
+    <!-- Script de MathJax para renderizar fórmulas LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .school-info {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab:hover:not(.active) {
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+            transform: translateY(-1px);
+        }
+
+        .content-section {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .identity-card {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .identity-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .identity-formula {
+            font-size: 1.2em; /* Ajustado para mejor visualización de LaTeX */
+            font-weight: bold;
+            color: #2d3748;
+            text-align: center;
+            margin: 10px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 2px dashed #667eea;
+            overflow-x: auto; /* Para fórmulas largas en móviles */
+        }
+
+        .category-title {
+            color: #667eea;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 10px;
+        }
+
+        .example {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .step {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .graph-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                min-width: 100%;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #fef5e7, #fed7aa);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #f6ad55;
+        }
+
+        .note {
+            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #38b2ac;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📐 Identidades Trigonométricas</h1>
+            <p class="subtitle">Guía Interactiva de Matemáticas - Grado 10</p>
+        </div>
+
+        <div class="school-info">
+            <h3>📚 Institución Educativa Técnica Nuestra Señora de la Presentación</h3>
+            <p><strong>Docente:</strong> Gladys Stella González Gamboa</p>
+            <p><strong>Asignatura:</strong> Matemáticas | <strong>Grado:</strong> 10</p>
+            <p><strong>Tema:</strong> Identidades Trigonométricas y Ecuaciones</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('conceptos', this)">🎯 Conceptos</button>
+            <button class="tab" onclick="showSection('identidades', this)">📋 Identidades</button>
+            <button class="tab" onclick="showSection('demostracion', this)">🔍 Demostración</button>
+            <button class="tab" onclick="showSection('ejemplos', this)">💡 Ejemplos</button>
+        </div>
+
+        <div id="conceptos" class="content-section active">
+            <h2>🎯 Conceptos Fundamentales</h2>
+            
+            <div class="highlight">
+                <h3>¿Qué es una Identidad Trigonométrica?</h3>
+                <p>Una <strong>identidad trigonométrica</strong> es una igualdad que contiene funciones trigonométricas y que se cumple para todo valor de la variable donde está definida la función.</p>
+            </div>
+
+            <div class="example">
+                <h4>Ejemplo:</h4>
+                <div class="identity-formula">$$\tan(x) = \frac{\sin(x)}{\cos(x)}$$</div>
+                <p>Esta identidad se cumple para todo valor de x donde $\cos(x) \neq 0$.</p>
+            </div>
+
+            <div class="note">
+                <p><strong>💡 Indicador de Desempeño:</strong> Demostrar de manera sencilla algunas identidades trigonométricas para aplicarlas en la solución de situaciones cotidianas.</p>
+            </div>
+
+            <h3>🔄 Diferencia entre Identidades y Ecuaciones</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div class="identity-card">
+                    <h4>✅ Identidades</h4>
+                    <p>Se cumplen para <strong>todos</strong> los valores válidos de la variable</p>
+                    <div class="identity-formula">$$\sin^2(x) + \cos^2(x) = 1$$</div>
+                </div>
+                <div class="identity-card">
+                    <h4>🎯 Ecuaciones</h4>
+                    <p>Se cumplen solo para <strong>algunos</strong> valores específicos</p>
+                    <div class="identity-formula">$$\cos(x) = \frac{\sqrt{3}}{2}$$</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="identidades" class="content-section">
+            <h2>📋 Identidades Fundamentales</h2>
+            
+            <div class="graph-container">
+                <img src="images/identidades.png" alt="Diagrama de Identidades Trigonométricas" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+
+        <div id="demostracion" class="content-section">
+            <h2>🔍 Demostración de una Identidad Trigonométrica</h2>
+            
+            <div class="highlight">
+                <p>A partir de las identidades trigonométricas fundamentales se pueden demostrar otras identidades más complejas. Para esto se deben tener en cuenta las siguientes recomendaciones:</p>
+            </div>
+
+            <div class="identity-card">
+                <h4>📋 Recomendaciones para Demostrar Identidades:</h4>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li style="margin: 10px 0;"><strong>🎯 Se elige un miembro de la igualdad,</strong> generalmente el más complicado, para transformarlo en el miembro más simple.</li>
+                    <li style="margin: 10px 0;"><strong>🔄 Se expresan las funciones trigonométricas</strong> en términos de seno y coseno, si es posible.</li>
+                    <li style="margin: 10px 0;"><strong>⚡ Se aplican las identidades fundamentales,</strong> se factoriza y se efectúan las operaciones indicadas, siempre que sea necesario.</li>
+                </ul>
+            </div>
+
+            <div class="note">
+                <p><strong>⚠️ Importante:</strong> Cuando se demuestran identidades, <strong>no se realizan operaciones en ambos miembros</strong> de la igualdad de manera simultánea como cuando se resuelven ecuaciones, sino que <strong>se transforma un miembro de la igualdad en el otro.</strong></p>
+            </div>
+
+            <div class="example">
+                <h3>📸 Ejemplo de Demostración 1</h3>
+                <div class="graph-container">
+                    <img src="images/ejemplo-demostracion-1.png" alt="Primer Ejemplo de Demostración de Identidad Trigonométrica" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>📸 Ejemplo de Demostración 2</h3>
+                <div class="graph-container">
+                    <img src="images/ejemplo-demostracion-2.png" alt="Segundo Ejemplo de Demostración de Identidad Trigonométrica" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+        </div>
+
+        <div id="ejemplos" class="content-section">
+            <h2>💡 Ejemplos Resueltos</h2>
+
+            <div class="example">
+                <h3>Ejemplo 1: Verificación de Identidad</h3>
+                <div class="identity-formula">¿Es $$\frac{\sec(\alpha)}{\csc(\alpha)} = \cot(\alpha)$$ una identidad?</div>
+                
+                <div class="step">
+                    <strong>Paso 1:</strong> Expresamos en términos de seno y coseno
+                    <div class="identity-formula">$$\frac{\sec(\alpha)}{\csc(\alpha)} = \frac{\frac{1}{\cos(\alpha)}}{\frac{1}{\sin(\alpha)}}$$</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Paso 2:</strong> Simplificamos la división (ley de extremos y medios)
+                    <div class="identity-formula">$$= \frac{1 \cdot \sin(\alpha)}{\cos(\alpha) \cdot 1} = \frac{\sin(\alpha)}{\cos(\alpha)}$$</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Paso 3:</strong> Aplicamos la identidad de tangente
+                    <div class="identity-formula">$$= \tan(\alpha)$$</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Conclusión:</strong> Como $\tan(\alpha) \neq \cot(\alpha)$, la igualdad <strong>NO es una identidad</strong>.
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Ejemplo 2: Demostración de Identidad</h3>
+                <div class="identity-formula">Demostrar que $$\tan^2(\alpha) = \frac{1}{\cos^2(\alpha)} - 1$$</div>
+                
+                <div class="step">
+                    <strong>Paso 1:</strong> Partimos del lado derecho
+                    <div class="identity-formula">$$\frac{1}{\cos^2(\alpha)} - 1$$</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Paso 2:</strong> Expresamos con denominador común
+                    <div class="identity-formula">$$= \frac{1 - \cos^2(\alpha)}{\cos^2(\alpha)}$$</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Paso 3:</strong> Aplicamos la identidad pitagórica (ya que $1 - \cos^2(\alpha) = \sin^2(\alpha)$)
+                    <div class="identity-formula">$$= \frac{\sin^2(\alpha)}{\cos^2(\alpha)}$$</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Paso 4:</strong> Aplicamos la definición de tangente
+                    <div class="identity-formula">$$= \left(\frac{\sin(\alpha)}{\cos(\alpha)}\right)^2 = \tan^2(\alpha)$$</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Conclusión:</strong> ✅ La identidad queda <strong>demostrada</strong>.
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Ejemplo 3: Ecuación Trigonométrica Lineal</h3>
+                <div class="identity-formula">Resolver: $$\sqrt{2}\cos(x) + 1 = 2$$</div>
+                
+                <div class="step">
+                    <strong>Paso 1:</strong> Despejamos el término trigonométrico
+                    <div class="identity-formula">$$\sqrt{2}\cos(x) = 1$$</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Paso 2:</strong> Dividimos por $\sqrt{2}$ y racionalizamos
+                    <div class="identity-formula">$$\cos(x) = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}$$</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Paso 3:</strong> Encontramos los ángulos en $[0, 2\pi]$
+                    <div class="identity-formula">$$x = \frac{\pi}{4} \quad \text{y} \quad x = \frac{7\pi}{4}$$</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId, clickedTab) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Desactivar todas las pestañas
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Activar la pestaña correspondiente
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            } else {
+                // Si no se pasa la pestaña, buscarla por el texto correspondiente
+                const tabTexts = {
+                    'conceptos': '🎯 Conceptos',
+                    'identidades': '📋 Identidades', 
+                    'demostracion': '🔍 Demostración',
+                    'ejemplos': '💡 Ejemplos'
+                };
+                const targetTab = Array.from(tabs).find(tab => tab.textContent.trim() === tabTexts[sectionId]);
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                }
+            }
+        }
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Asegurar que la primera pestaña esté activa
+            const firstTab = document.querySelector('.tab');
+            showSection('conceptos', firstTab);
+        });
+    </script>
+</body>
+</html>
