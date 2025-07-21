@@ -201,6 +201,115 @@
             border-left: 4px solid #38b2ac;
             font-style: italic;
         }
+        .note {
+            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #38b2ac;
+            font-style: italic;
+        }
+        .activity-card {
+            background: linear-gradient(135deg, #fff5f5, #fed7d7);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #e53e3e;
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .activity-date {
+            background: #e53e3e;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .activity-title {
+            color: #742a2a;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .activity-description {
+            color: #2d3748;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .activity-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #764ba2, #9f7aea);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .activity-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .activity-button:visited {
+            color: white;
+        }
+        
+        .activity-requirements {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 3px solid #764ba2;
+        }
+        
+        .activity-requirements h4 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .activity-requirements ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .activity-requirements li {
+            margin: 8px 0;
+            color: #4a5568;
+        }
+        
+        @media (max-width: 768px) {
+            .activity-card {
+                padding: 20px;
+            }
+        
+            .activity-title {
+                font-size: 1.2em;
+            }
+        
+            .activity-button {
+                display: block;
+                text-align: center;
+                margin: 10px 0;
+            }
+        }
+                
     </style>
 </head>
 <body>
@@ -222,6 +331,7 @@
             <button class="tab" onclick="showSection('identidades', this)">📋 Identidades</button>
             <button class="tab" onclick="showSection('demostracion', this)">🔍 Demostración</button>
             <button class="tab" onclick="showSection('ejemplos', this)">💡 Ejemplos</button>
+            <button class="tab" onclick="showSection('actividades', this)">📝 Actividades</button>
         </div>
 
         <div id="conceptos" class="content-section active">
@@ -376,8 +486,128 @@
                 </div>
             </div>
         </div>
+        <div id="actividades" class="content-section">
+    <h2>📝 Cronograma de Actividades</h2>
+    
+    <div class="note">
+        <p><strong>📅 Importante:</strong> A continuación se presenta el cronograma de actividades para el tema de Identidades Trigonométricas. Cada actividad tiene una fecha específica de entrega y requisitos particulares.</p>
     </div>
 
+    <!-- Actividad 1 -->
+    <div class="activity-card">
+        <div class="activity-date">📅 Entrega: 21 de Julio de 2025</div>
+        <div class="activity-title">📝 Actividad 1: Resumen del Tema</div>
+        <div class="activity-description">
+            El estudiante debe copiar en su cuaderno toda la información de las siguientes secciones de esta guía interactiva:
+        </div>
+        <div class="activity-requirements">
+            <h4>✅ Secciones a copiar:</h4>
+            <ul>
+                <li><strong>Conceptos:</strong> Definiciones fundamentales y diferencias entre identidades y ecuaciones</li>
+                <li><strong>Identidades:</strong> Todas las identidades trigonométricas fundamentales</li>
+                <li><strong>Demostración:</strong> Métodos y recomendaciones para demostrar identidades</li>
+                <li><strong>Ejemplos:</strong> Los tres ejemplos resueltos paso a paso</li>
+            </ul>
+        </div>
+        <div class="activity-requirements">
+            <h4>📋 Instrucciones:</h4>
+            <ul>
+                <li>Copiar a mano en el cuaderno de matemáticas</li>
+                <li>Incluir todas las fórmulas y ejemplos</li>
+                <li>Presentar con letra legible y organizada</li>
+                <li><strong>Entregar al finalizar la clase al docente</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Actividad 2 -->
+    <div class="activity-card">
+        <div class="activity-date">📅 Entrega: 24 de Julio de 2025</div>
+        <div class="activity-title">📖 Actividad 2: Lectura #2</div>
+        <div class="activity-description">
+            Desarrollar la Lectura #2 correspondiente al tema de identidades trigonométricas. Los materiales de lectura están disponibles en la carpeta de Google Drive.
+        </div>
+        <div class="activity-requirements">
+            <h4>📋 Instrucciones:</h4>
+            <ul>
+                <li>Acceder al enlace de Google Drive</li>
+                <li>Descargar y leer el material asignado</li>
+                <li>Desarrollar las actividades propuestas en la lectura</li>
+                <li>Presentar el trabajo en hojas de papel</li>
+            </ul>
+        </div>
+        <a href="https://drive.google.com/drive/folders/1ncg_sknb_2Z5vM2OfIlj2JYOG6wIwoVI?usp=sharing" 
+           target="_blank" 
+           class="activity-button">
+           🔗 Acceder a Lectura #2
+        </a>
+    </div>
+
+    <!-- Actividad 3 -->
+    <div class="activity-card">
+        <div class="activity-date">📅 Entrega: 28 de Julio de 2025</div>
+        <div class="activity-title">✏️ Actividad 3: Ejercicios Resueltos en Clase</div>
+        <div class="activity-description">
+            Resolver los ejercicios propuestos que se trabajarán durante la clase. Los ejercicios están disponibles en la carpeta de Google Drive y se resolverán de manera grupal en el aula.
+        </div>
+        <div class="activity-requirements">
+            <h4>📋 Instrucciones:</h4>
+            <ul>
+                <li>Acceder al enlace para descargar los ejercicios</li>
+                <li>Participar activamente en la resolución durante la clase</li>
+                <li>Tomar apuntes de los procedimientos explicados</li>
+                <li>Entregar la hoja de ejercicios resuelta al final de la clase</li>
+            </ul>
+        </div>
+        <a href="https://drive.google.com/drive/folders/1YJB882ggxt7gFfoa8kfoqMEgWl_T9O64?usp=sharing" 
+           target="_blank" 
+           class="activity-button">
+           🔗 Acceder a Ejercicios de Clase
+        </a>
+    </div>
+
+    <!-- Actividad 4 -->
+    <div class="activity-card">
+        <div class="activity-date">📅 Entrega: 31 de Julio de 2025</div>
+        <div class="activity-title">🎯 Actividad 4: Ejercicios Tipo Prueba Saber</div>
+        <div class="activity-description">
+            Resolver ejercicios en formato tipo Prueba Saber ICFES para fortalecer las competencias evaluadas en las pruebas estandarizadas. Esta actividad se realizará en parejas.
+        </div>
+        <div class="activity-requirements">
+            <h4>👥 Modalidad de Trabajo:</h4>
+            <ul>
+                <li><strong>Trabajo en parejas:</strong> Cada pareja recibirá una hoja con preguntas</li>
+                <li>El docente proporcionará el material durante la clase</li>
+                <li>Tiempo estimado: 45 minutos</li>
+                <li><strong>Entrega el mismo día de la clase</strong></li>
+            </ul>
+        </div>
+        <div class="activity-requirements">
+            <h4>📋 Características del examen:</h4>
+            <ul>
+                <li>Preguntas de selección múltiple con única respuesta</li>
+                <li>Enfoque en competencias matemáticas</li>
+                <li>Aplicación de identidades trigonométricas</li>
+                <li>Justificación de respuestas requerida</li>
+            </ul>
+        </div>
+        <div class="note">
+            <p><strong>📌 Nota:</strong> El material de esta actividad será proporcionado directamente por el docente durante la clase del 31 de julio.</p>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <h3>🎯 Criterios de Evaluación</h3>
+        <p>Todas las actividades serán evaluadas considerando:</p>
+        <ul style="margin: 15px 0; padding-left: 20px;">
+            <li style="margin: 8px 0;"><strong>Puntualidad en la entrega</strong></li>
+            <li style="margin: 8px 0;"><strong>Calidad y organización del trabajo</strong></li>
+            <li style="margin: 8px 0;"><strong>Comprensión de los conceptos</strong></li>
+            <li style="margin: 8px 0;"><strong>Procedimientos correctos</strong></li>
+            <li style="margin: 8px 0;"><strong>Participación en clase</strong></li>
+        </ul>
+    </div>
+</div>
     <script>
         function showSection(sectionId, clickedTab) {
             // Ocultar todas las secciones
@@ -401,6 +631,7 @@
                     'identidades': '📋 Identidades', 
                     'demostracion': '🔍 Demostración',
                     'ejemplos': '💡 Ejemplos'
+                    'actividades': '📝 Actividades'
                 };
                 const targetTab = Array.from(tabs).find(tab => tab.textContent.trim() === tabTexts[sectionId]);
                 if (targetTab) {
